@@ -1,0 +1,84 @@
+---
+- name: update APT package cache and aptitude safe-upgrade
+  apt: update_cache=yes upgrade=yes cache_valid_time={{three_days}}
+  tags:
+    - setup
+
+- name: generate locale
+  shell: locale-gen {{common.locale}}
+  tags:
+    - setup
+
+- name: update locale
+  shell: update-locale LANG={{common.locale}}
+  tags:
+    - setup
+
+- name: write .bash_aliases
+  copy: src=bash_aliases dest=/home/vagrant/.bash_aliases
+  tags:
+    - setup
+
+- name: install common packages
+  apt: pkg={{item}} state=installed update_cache=yes cache_valid_time={{three_days}}
+  with_items: "{{common.pkg}}"
+  tags:
+    - setup
+
+- name: add deployment user
+  user: name={{common.deploy_username}} password={{common.deploy_password}}
+  tags:
+    - setup
+
+- name: "add authorized deploy key for {{common.ssh_users}}"
+  authorized_key: user={{item}} key="{{ lookup('file', '~/.ssh/vagrant.pub') }}"
+  with_items: "{{common.ssh_users}}"
+  tags:
+    - setup
+
+- name: remove sudo group rights
+  lineinfile: dest=/etc/sudoers regexp="^%sudo" state=absent
+  tags:
+    - setup
+
+- name: add deploy user to sudoers
+  lineinfile: dest=/etc/sudoers regexp="deploy ALL" line="deploy ALL=(ALL) ALL" state=present
+  tags:
+    - setup
+
+- name: disallow root SSH access
+  lineinfile: dest=/etc/ssh/sshd_config regexp="^PermitRootLogin" line="PermitRootLogin no" state=present
+  notify: restart sshd
+  tags:
+    - setup
+
+- name: disallow password authentication
+  lineinfile: dest=/etc/ssh/sshd_config regexp="^PasswordAuthentication" line="PasswordAuthentication no" state=present
+  notify: restart sshd
+  tags:
+    - setup
+
+- name: adjust APT update intervals
+  copy: src=apt_periodic dest=/etc/apt/apt.conf.d/10periodic
+  tags:
+    - setup
+
+- name: "make sure unattended-upgrades only installs from {{common.ubuntu_release}}-security"
+  copy: src=50unattended-upgrades dest=/etc/apt/apt.conf.d/50unattended-upgrades
+  tags:
+    - setup
+
+- name: generate debconf selections so that Postfix can configure itself non-interactively
+  template: src=postfix_selections  dest=/tmp/postfix_selections
+  tags:
+    - setup
+
+- name: set up Postfix to relay mail
+  command: debconf-set-selections /tmp/postfix_selections
+  tags:
+    - setup
+
+- name: "make logwatch mail {{common.logwatch_email}} daily"
+  lineinfile: dest=/etc/cron.daily/00logwatch regexp="^/usr/sbin/logwatch" line="/usr/sbin/logwatch --output mail --mailto {{common.logwatch_email}} --detail high" state=present create=yes
+  tags:
+    - setup

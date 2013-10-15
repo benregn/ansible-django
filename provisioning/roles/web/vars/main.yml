@@ -1,0 +1,20 @@
+---
+python:
+  dependencies:
+    - python-dev
+    - python-setuptools
+    ### Pillow prereqs
+    - libtiff4-dev
+    - libjpeg8-dev
+    - zlib1g-dev
+    - libfreetype6-dev
+    - liblcms1-dev
+    - libwebp-dev
+    - tcl8.5-dev
+    - tk8.5-dev
+    ###
+  pip_global_packages:
+    - virtualenv
+    - virtualenvwrapper
+    - supervisor
+    - uwsgi

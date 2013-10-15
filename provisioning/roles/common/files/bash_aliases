@@ -1,0 +1,30 @@
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--distribute'
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_RESPECT_VIRTUALENV=true
+export PYTHONPATH=$PYTHONPATH:/vagrant:$WORKON_HOME/releasly/lib/python2.7/site-packages/debug_toolbar
+export DATABASE_URL="postgres://remindr:skjf9845q234dsux23tegrh92314@localhost:5432/remindr_db"
+if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+else
+    echo "WARNING: Can't find virtualenvwrapper.sh"
+fi
+
+
+export HISTCONTROL=erasedups
+export HISTSIZE=5000
+shopt -s histappend
+
+
+## Tell ls to be colourful
+export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+
+## Tell grep to highlight matches
+export GREP_OPTIONS='--color=auto'
+
+
+# Set environment language
+export LANG=en_US.utf8
+export LC_ALL=en_US.UTF-8
+export LC_LANG=en_US.UTF-8

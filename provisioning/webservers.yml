@@ -1,0 +1,7 @@
+---
+- hosts: webservers
+  gather_facts: no
+  sudo: True
+  roles:
+    - common
+    - web

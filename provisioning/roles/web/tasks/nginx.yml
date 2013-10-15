@@ -1,0 +1,21 @@
+---
+- name: add nginx ppa
+  apt_repository: repo=ppa:nginx/stable state=present update_cache=yes
+  tags:
+    - nginx
+
+- name: install nginx package
+  apt: pkg=nginx state=installed
+  sudo: True
+  tags:
+    - nginx
+
+- name: remove default nginx site
+  file: path=/etc/nginx/sites-enabled/default state=absent
+  tags:
+    - nginx
+
+# - name: write nginx.conf
+#   template: src=templates/nginx.conf dest=/etc/nginx/nginx.conf
+#   tags:
+#     - nginx
