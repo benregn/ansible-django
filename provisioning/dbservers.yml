@@ -1,5 +1,5 @@
 ---
-- hosts: webservers
+- hosts: dbservers
   gather_facts: no
   sudo: True
   roles:
