@@ -10,6 +10,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.network :forwarded_port, guest: 80, host: 8080
 
+  config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: true
+
   config.ssh.private_key_path = "/Users/Tomas/.ssh/vagrant"
 
   config.vm.provider :virtualbox do |vb|
