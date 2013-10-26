@@ -1,0 +1,10 @@
+---
+- name: add deployment user
+  user: name={{common.deploy_username}} password={{common.deploy_password}}
+  tags:
+    - setup
+
+- name: add deploy user to sudoers
+  lineinfile: dest=/etc/sudoers regexp="deploy ALL" line="deploy ALL=(ALL) ALL" state=present
+  tags:
+    - setup
