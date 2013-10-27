@@ -10,7 +10,7 @@ redis:
 redmon:
   service: 'redmon'
   dependencies:
-    - ruby1.9.3
+    - ruby1.9.1-full
     - rubygems
     - g++
   gems:
