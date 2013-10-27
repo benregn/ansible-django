@@ -43,6 +43,12 @@
     - redis
     - redmon
 
+- name: "link {{redmon.service}} to /usr/local/bin"
+  file: src=/home/vagrant/.gem/ruby/1.9.1/bin/redmon dest=/usr/local/bin/redmon state=link
+  tags:
+    - redis
+    - redmon
+
 - name: install Redmon init script
   template: src=redmon.j2 dest=/etc/init.d/{{redmon.service}} owner=root group=root mode=0755
   tags:
