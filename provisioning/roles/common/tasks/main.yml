@@ -25,9 +25,8 @@
   tags:
     - setup
 
-- name: "add authorized deploy key for {{common.ssh_users}}"
-  authorized_key: user={{item}} key="{{ lookup('file', '~/.ssh/vagrant.pub') }}"
-  with_items: "{{common.ssh_users}}"
+- name: add custom ssh key for vagrant
+  authorized_key: user=vagrant key="{{ lookup('file', '~/.ssh/v.pub') }}"
   tags:
     - setup
 

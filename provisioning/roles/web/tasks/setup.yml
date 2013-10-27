@@ -1,10 +1,15 @@
 ---
 - name: add deployment user
-  user: name={{common.deploy_username}} password={{common.deploy_password}}
+  user: name={{setup.deploy_username}} password={{setup.deploy_password}}
   tags:
     - setup
 
-- name: add deploy user to sudoers
+- name: add deployment user to sudoers
   lineinfile: dest=/etc/sudoers regexp="deploy ALL" line="deploy ALL=(ALL) ALL" state=present
+  tags:
+    - setup
+
+- name: "add ssh key for: {{setup.deploy_username}}"
+  authorized_key: user={{setup.deploy_username}} key="{{ lookup('file', '~/.ssh/v.pub') }}"
   tags:
     - setup
