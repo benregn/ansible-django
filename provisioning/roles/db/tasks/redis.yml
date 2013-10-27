@@ -38,6 +38,7 @@
 - name: install gems requered for Redmon
   gem: name={{item}} state=present
   with_items: "{{redmon.gems}}"
+  sudo: False
   tags:
     - redis
     - redmon
