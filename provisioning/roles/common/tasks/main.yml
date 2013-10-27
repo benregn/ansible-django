@@ -30,10 +30,10 @@
   tags:
     - setup
 
-- name: remove default insecure ssh key
-  lineinfile: dest=/home/vagrant/.ssh/authorized_keys regexp="vagrant insecure public key" state=absent
-  tags:
-    - setup
+# - name: remove default insecure ssh key
+#   lineinfile: dest=/home/vagrant/.ssh/authorized_keys regexp="vagrant insecure public key" state=absent
+#   tags:
+#     - setup
 
 - name: remove sudo group rights
   lineinfile: dest=/etc/sudoers regexp="^%sudo" state=absent
