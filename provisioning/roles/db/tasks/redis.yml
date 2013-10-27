@@ -49,8 +49,14 @@
     - redis
     - redmon
 
-- name: install Redmon init script
-  template: src=redmon.j2 dest=/etc/init.d/{{redmon.service}} owner=root group=root mode=0755
+- name: create /etc/supervisor directory
+  file: path=/etc/supervisor state=directory
+  tags:
+    - redis
+    - redmon
+
+- name: Redmon supervisord conf file
+  template: src=redmon.j2 dest=/etc/supervisor/{{redmon.service}}.conf
   tags:
     - redis
     - redmon
