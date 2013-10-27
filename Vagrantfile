@@ -14,6 +14,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.ssh.private_key_path = "/Users/Tomas/.ssh/vagrant"
 
+  # config.vm.provision "shell", path: "provisioning/upgrade_guest_additions.sh"
+
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "512"]
   end
