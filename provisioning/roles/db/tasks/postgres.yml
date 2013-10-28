@@ -43,6 +43,8 @@
 - name: change listen_addresses to '*'
   lineinfile: dest=/etc/postgresql/9.3/main/postgresql.conf regexp="^#listen_addresses" line="listen_addresses = '*'" state=present backup=yes
   sudo: True
+  notify:
+    - restart postgresql
   tags:
     - postgres
 
