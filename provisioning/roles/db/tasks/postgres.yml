@@ -24,13 +24,13 @@
   tags:
     - postgres
 
-- name: update postgres db configuration
-  copy: src=postgresql.conf dest=/etc/postgresql/9.3/main/postgresql.conf
-  sudo: True
-  notify:
-    - restart postgresql
-  tags:
-    - postgres
+# - name: update postgres db configuration
+#   copy: src=postgresql.conf dest=/etc/postgresql/9.3/main/postgresql.conf
+#   sudo: True
+#   notify:
+#     - restart postgresql
+#   tags:
+#     - postgres
 
 - name: update postgres client configuration
   copy: src=pg_hba.conf dest=/etc/postgresql/9.3/main/pg_hba.conf
