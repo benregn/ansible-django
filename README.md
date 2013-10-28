@@ -16,7 +16,8 @@ Write a bit about removing vagrant insecure key task
 
 Include reference to "First 5 min on server" ansible blog post
 
-Refactor each major service to be it's own role, e.g. nginx, postgres, redis etc.
+Refactor each major service to be it's own role, e.g. nginx, postgres, redis etc. so they can be included as needed as git submodules.
+
 
 Troubleshooting
 ---------------
