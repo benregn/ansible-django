@@ -1,9 +1,14 @@
 ansible-django
 ==============
 
+Step-by-step
+------------
+
 1. run the provisioning once without uncommenting the `config.ssh.private_key_path = "/path/to/key"` line in the `Vagrantfile
 
+
 TODO:
+-----
 
 Write a bit about upgrading guest additions
 
