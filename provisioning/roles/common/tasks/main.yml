@@ -77,6 +77,13 @@
   tags:
     - setup
 
+- name: add supervisord.conf
+  copy: dest=/etc/supervisord.conf src=supervisord.conf
+  notify:
+    - restart supervisord
+  tags:
+    - setup
+
 - name: add supervisord init.d script
   copy: src=supervisord dest=/etc/init.d/supervisord owner=root group=root mode='755'
   notify: restart supervisord

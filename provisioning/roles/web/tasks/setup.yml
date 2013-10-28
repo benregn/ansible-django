@@ -13,8 +13,3 @@
   authorized_key: user={{setup.deploy_username}} key="{{ lookup('file', '~/.ssh/v.pub') }}"
   tags:
     - setup
-
-- name: add supervisord.conf
-  copy: dest=/etc/supervisord.conf src=supervisord.conf
-  tags:
-    - setup
