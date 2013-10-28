@@ -62,7 +62,7 @@
     - redmon
 
 - name: ensure Redmon server is running
-  service: name={{redmon.service}} state=started
+  supervisorctl: name={{redmon.service}} state=started
   tags:
     - redis
     - redmon
