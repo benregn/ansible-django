@@ -55,14 +55,14 @@
     - redis
     - redmon
 
-- name: Redmon supervisord conf file
-  template: src=redmon.j2 dest=/etc/supervisor/{{redmon.service}}.conf  owner=root group=root mode='755'
-  tags:
-    - redis
-    - redmon
+# - name: Redmon supervisord conf file
+#   template: src=redmon.j2 dest=/etc/supervisor/{{redmon.service}}.conf  owner=root group=root mode='755'
+#   tags:
+#     - redis
+#     - redmon
 
-- name: ensure Redmon server is running
-  supervisorctl: name={{redmon.service}} state=started
-  tags:
-    - redis
-    - redmon
+# - name: ensure Redmon server is running
+#   supervisorctl: name={{redmon.service}} state=started
+#   tags:
+#     - redis
+#     - redmon
