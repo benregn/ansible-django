@@ -1,6 +1,6 @@
 ---
 - name: add nginx ppa
-  apt_repository: repo=ppa:nginx/stable state=present update_cache=yes
+  apt_repository: repo=ppa:nginx/stable state=latest update_cache=yes
   tags:
     - nginx
 
@@ -12,6 +12,7 @@
 
 - name: remove default nginx site
   file: path=/etc/nginx/sites-enabled/default state=absent
+  notify: restart nginx
   tags:
     - nginx
 
