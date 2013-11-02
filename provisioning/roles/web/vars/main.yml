@@ -17,7 +17,6 @@ python:
     - virtualenv
     - virtualenvwrapper
     - supervisor
-    - uwsgi
 setup:
   deploy_username: deploy
   deploy_password: '6AQZI1Z95b53U'
