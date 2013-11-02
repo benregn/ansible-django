@@ -13,7 +13,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: true
 
-  # start with provisioning once with the line below commented out, then uncomment it
+  # start with provisioning once with the line below commented out.  Then, while the
+  # vagrant is halted, uncomment it and bring vagrant back up
   # config.ssh.private_key_path = "/Users/Tomas/.ssh/v"
 
   # config.vm.provision "shell", path: "provisioning/upgrade_guest_additions.sh"
