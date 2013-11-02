@@ -1,6 +1,6 @@
 ---
 - name: update APT package cache and aptitude safe-upgrade
-  apt: update_cache=yes upgrade=yes cache_valid_time={{three_days}}
+  apt: update_cache=yes upgrade=yes cache_valid_time={{six_hours}}
   tags:
     - setup
 
@@ -20,7 +20,7 @@
     - setup
 
 - name: install common packages
-  apt: pkg={{item}} state=installed update_cache=yes cache_valid_time={{three_days}}
+  apt: pkg={{item}} state=installed update_cache=yes cache_valid_time={{six_hours}}
   with_items: "{{common.pkg}}"
   tags:
     - setup

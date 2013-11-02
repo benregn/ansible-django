@@ -17,7 +17,7 @@
     - redis
 
 - name: install Redmon dependencies
-  apt: pkg={{item}} state=installed update-cache=yes cache_valid_time={{three_days}}
+  apt: pkg={{item}} state=installed update-cache=yes cache_valid_time={{six_hours}}
   with_items: "{{redmon.dependencies}}"
   tags:
     - redis
