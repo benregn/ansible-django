@@ -5,7 +5,7 @@
     - nginx
 
 - name: install nginx package
-  apt: pkg=nginx state=installed
+  apt: pkg=nginx state=installed update_cache=yes cache_valid_time={{six_hours}}
   sudo: True
   tags:
     - nginx

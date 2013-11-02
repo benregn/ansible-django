@@ -1,6 +1,6 @@
 ---
 - name: install python and dependencies using apt
-  apt: pkg={{item}} state=installed
+  apt: pkg={{item}} state=installed update_cache=yes cache_valid_time={{six_hours}}
   with_items: "{{python.dependencies}}"
   tags:
     - python

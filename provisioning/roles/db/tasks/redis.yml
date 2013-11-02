@@ -1,6 +1,6 @@
 ---
 - name: "install Redis server: {{redis.package}}"
-  apt: pkg={{redis.package}} state=installed update-cache=yes
+  apt: pkg={{redis.package}} state=installed update_cache=yes cache_valid_time={{six_hours}}
   tags:
     - redis
 
@@ -17,7 +17,7 @@
     - redis
 
 - name: install Redmon dependencies
-  apt: pkg={{item}} state=installed update-cache=yes cache_valid_time={{six_hours}}
+  apt: pkg={{item}} state=installed update_cache=yes cache_valid_time={{six_hours}}
   with_items: "{{redmon.dependencies}}"
   tags:
     - redis
