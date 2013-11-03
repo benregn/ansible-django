@@ -13,3 +13,9 @@
   authorized_key: user={{setup.deploy_username}} key="{{ lookup('file', '~/.ssh/v.pub') }}"
   tags:
     - setup
+
+- name: install web packages
+  apt: pkg={{item}} state=installed update_cache=yes cache_valid_time={{six_hours}}
+  with_items: "{{setup.pkg}}"
+  tags:
+    - setup
