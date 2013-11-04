@@ -1,4 +1,6 @@
 ---
+django:
+  root_dir: /path/to/django/root
 python:
   dependencies:
     - python-dev
