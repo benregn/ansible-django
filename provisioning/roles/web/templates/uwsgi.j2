@@ -1,0 +1,25 @@
+[uwsgi]
+# master
+master = true
+
+# maximum number of processes
+processes = {{ansible_processor_cores}}
+
+# the socket (use the full path to be safe)
+socket = /tmp/{{project_name}}.sock
+
+# with appropriate permissions
+chmod-socket = 644
+uid = www-data
+gid = www-data
+chown-socket = www-data
+
+# the base directory
+chdir = {{django.root_dir}}
+
+# Django's wsgi file
+module = {{django.wsgi_path}}
+callable = application
+
+# clear environment on exit
+vacuum = true

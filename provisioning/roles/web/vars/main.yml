@@ -1,6 +1,7 @@
 ---
 django:
   root_dir: /path/to/django/root
+  wsgi_path: config.wsgi
 python:
   dependencies:
     - python-dev

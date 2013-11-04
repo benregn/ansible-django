@@ -1,0 +1,20 @@
+---
+- name: add uwsgi.conf to supervisor
+  copy: src=uwsgi.conf dest=/etc/supervisor/uwsgi.conf
+  notify:
+    - restart supervisord
+  tags:
+    - uwsgi
+
+- name: ensure uwsgi is running
+  supervisorctl: name=uwsgi state=started
+  tags:
+    - uwsgi
+
+- name: ensure uwsgi /etc/ dirs are present
+  file: path=/etc/uwsgi/vassals/ state=directory
+
+- name: add Django uwsgi ini file to vassals dir
+  template: src=uwsgi.j2 dest=/etc/uwsgi/vassals/{{project_name}}.ini
+  tags:
+    - uwsgi

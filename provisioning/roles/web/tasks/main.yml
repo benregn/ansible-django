@@ -2,3 +2,4 @@
 - include: setup.yml
 - include: python.yml
 - include: nginx.yml
+- include: uwsgi.yml
