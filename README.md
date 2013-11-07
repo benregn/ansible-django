@@ -6,6 +6,8 @@ Step-by-step
 
 1. have PSQL_USER, PSQL_DB_NAME, PSQL_PASSWORD in your environment
 
+2. change following ansible vars: project_name, root_dir, wsgi_path, logwatch_email, root_address, mailname, deploy_password
+
 2. run the provisioning once without uncommenting the `config.ssh.private_key_path = "/path/to/key"` line in the `Vagrantfile
 
 
