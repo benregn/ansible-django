@@ -5,7 +5,7 @@
     - setup
 
 - name: add deployment user to sudoers
-  lineinfile: dest=/etc/sudoers regexp="deploy ALL" line="deploy ALL=(ALL) ALL" state=present
+  lineinfile: dest=/etc/sudoers regexp="{{setup.deploy_username}} ALL" line="{{setup.deploy_username}} ALL=(ALL) ALL" state=present
   tags:
     - setup
 
