@@ -22,8 +22,8 @@ python:
     - supervisor
 setup:
   deploy_username: deploy
-  deploy_password: '6AQZI1Z95b53U'
-  # crypted password, generated on a Linux box using: echo 'import crypt,getpass; print crypt.crypt(getpass.getpass(), "?6+AC3bdCF7!")' | python -
+  deploy_password: generate your own password
+  # crypted password, generated on a Linux box using: echo 'import crypt,getpass; print crypt.crypt(getpass.getpass(), "$6$AC3bdCF7!$)' | python -
   pkg:
     - memcached
     - libmemcached-dev
