@@ -1,11 +1,10 @@
-export PIP_DOWNLOAD_CACHE=$HOME/download-cache/
+export PIP_DOWNLOAD_CACHE=/home/{{deploy_username}}/download-cache/
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--distribute'
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
-export PYTHONPATH=$PYTHONPATH:/vagrant:$WORKON_HOME/releasly/lib/python2.7/site-packages/debug_toolbar
-export DATABASE_URL="postgres://remindr:skjf9845q234dsux23tegrh92314@localhost:5432/remindr_db"
+export DATABASE_URL="postgres://{{ lookup('env', 'PSQL_USER') }}:{{ lookup('env', 'PSQL_PASSWORD') }}@localhost:5432/{{ lookup('env', 'PSQL_DB_NAME') }}"
 if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
 else
