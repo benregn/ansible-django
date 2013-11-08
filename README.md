@@ -37,6 +37,10 @@ Include reference to "First 5 min on server" ansible blog post
 
 Refactor each major service to be it's own role, e.g. nginx, postgres, redis etc. so they can be included as needed as git submodules.
 
+Use cookiecutter to automate some of the setup for each new project?
+
+Fabric or ansible deploy script
+
 
 Troubleshooting
 ---------------
