@@ -15,7 +15,7 @@
     - setup
 
 - name: write .bash_aliases
-  template: src=bash_aliases dest=/home/{{setup.deploy_username}}/.bash_aliases
+  template: src=bash_aliases dest=/home/{{setup.deploy_username}}/.bash_aliases owner={{setup.deploy_username}} group=www-data
   tags:
     - setup
 
