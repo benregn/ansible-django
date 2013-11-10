@@ -12,9 +12,9 @@
     - uwsgi
 
 - name: ensure uwsgi /etc/ dirs are present
-  file: path=/etc/uwsgi/vassals/ state=directory
+  file: path=/etc/uwsgi/vassals/ owner=www-data group=www-data state=directory
 
 - name: add Django uwsgi ini file to vassals dir
-  template: src=uwsgi.j2 dest=/etc/uwsgi/vassals/{{project_name}}.ini
+  template: src=uwsgi.j2 dest=/etc/uwsgi/vassals/{{project_name}}.ini owner=www-data group=www-data
   tags:
     - uwsgi
