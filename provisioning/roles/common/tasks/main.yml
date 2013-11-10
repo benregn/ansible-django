@@ -73,7 +73,7 @@
     - setup
 
 - name: add supervisord.conf
-  copy: dest=/etc/supervisord.conf src=supervisord.conf
+  copy: src=supervisord.conf dest={{supervisor.conf_location}}
   notify:
     - restart supervisord
   tags:
@@ -90,7 +90,7 @@
     - setup
 
 - name: add supervisord init.d script
-  copy: src=supervisord dest=/etc/init.d/supervisord owner=root group=root mode='755'
+  template: src=supervisord dest=/etc/init.d/supervisord owner=root group=root mode='755' force=yes
   notify: restart supervisord
   tags:
     - setup

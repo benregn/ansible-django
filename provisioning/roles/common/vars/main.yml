@@ -14,3 +14,5 @@ common:
 postfix:
   root_address: ops@releasly.com
   mailname: releasly.com
+supervisor:
+  conf_location: /etc/supervisord.conf
