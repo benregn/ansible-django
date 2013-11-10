@@ -9,6 +9,9 @@ Step-by-step
 2. configure synced folder in the Vagrantfile, change project_name, deploy and deploy_user
 
 3. change following ansible vars: project_name, root_dir, wsgi_path, logwatch_email, root_address, mailname, deploy_password
+    * roles/web/vars
+        * rabbitmq.admin_password
+        * rabbitmq.password
 
 4. run the provisioning once without uncommenting the `config.ssh.private_key_path = "/path/to/key"` line in the `Vagrantfile
 

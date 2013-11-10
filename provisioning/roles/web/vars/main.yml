@@ -27,3 +27,7 @@ setup:
   pkg:
     - memcached
     - libmemcached-dev
+rabbitmq:
+  user: django
+  password: changeme
+  admin_password: changeme2

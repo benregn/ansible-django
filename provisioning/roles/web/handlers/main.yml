@@ -4,3 +4,6 @@
 
 - name: restart supervisord
   service: name=supervisord state=restarted
+
+- name: restart rabbitmq
+  service: name=rabbitmq-server state=restarted
