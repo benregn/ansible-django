@@ -18,9 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # start with provisioning once with the line below commented out.  Then, while the
   # vagrant is halted, uncomment it and bring vagrant back up
-  # config.ssh.private_key_path = "/Users/Tomas/.ssh/v"
-
-  # config.vm.provision "shell", path: "provisioning/upgrade_guest_additions.sh"
+  # config.ssh.private_key_path = "/Users/Tomas/.ssh/v
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "512"]
@@ -30,4 +28,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.playbook = "provisioning/site.yml"
     ansible.inventory_path = "provisioning/local"
   end
+
+  config.vm.provision "shell", path: "provisioning/upgrade_guest_additions.sh"
 end
