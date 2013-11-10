@@ -28,6 +28,7 @@ setup:
   pkg:
     - memcached
     - libmemcached-dev
+    - libevent-dev
 rabbitmq:
   user: django
   password: changeme
