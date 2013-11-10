@@ -11,6 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 80, host: 8080
   config.vm.network :forwarded_port, guest: 4567, host: 4567, id: "redmon"
   config.vm.network :forwarded_port, guest: 8000, host: 8000, id: "django"
+  config.vm.network :forwarded_port, guest: 15672, host: 15672, id: "rabbitmq-management"
 
   config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: true
   config.vm.synced_folder "project_name", "/home/deploy/www/domains/example.com/", id: "django-root", owner: "deploy_user", disabled: false
