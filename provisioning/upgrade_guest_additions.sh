@@ -3,6 +3,7 @@ wget -c http://download.virtualbox.org/virtualbox/$CURRENT_VERSION/VBoxGuestAddi
 sudo umount /mnt
 sudo mount VBoxGuestAdditions_$CURRENT_VERSION.iso -o loop /mnt # replace with correct version
 sudo apt-get update
+sudo apt-get purge -y virtualbox*
 sudo apt-get install -y dkms
 sudo apt-get install -y linux-headers-$(uname -r)
 sudo sh /mnt/VBoxLinuxAdditions.run
