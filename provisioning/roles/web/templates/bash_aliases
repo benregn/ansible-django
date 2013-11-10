@@ -1,4 +1,4 @@
-export PIP_DOWNLOAD_CACHE=/home/{{deploy_username}}/download-cache/
+export PIP_DOWNLOAD_CACHE=/home/{{setup.deploy_username}}/download-cache/
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--distribute'
