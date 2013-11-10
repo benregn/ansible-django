@@ -49,12 +49,6 @@
     - redis
     - redmon
 
-- name: create /etc/supervisor directory
-  file: path=/etc/supervisor state=directory
-  tags:
-    - redis
-    - redmon
-
 # - name: Redmon supervisord conf file
 #   template: src=redmon.j2 dest=/etc/supervisor/{{redmon.service}}.conf  owner=root group=root mode='755'
 #   tags:

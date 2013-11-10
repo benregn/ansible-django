@@ -79,6 +79,11 @@
   tags:
     - setup
 
+- name: create /etc/supervisor directory
+  file: path=/etc/supervisor state=directory
+  tags:
+    - setup
+
 - name: create /var/log/supervisor directory
   file: path=/var/log/supervisor state=directory
   tags:
