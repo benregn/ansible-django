@@ -14,6 +14,11 @@
   tags:
     - setup
 
+- name: write .bash_aliases
+  template: src=bash_aliases dest=/home/{{setup.deploy_username}}/.bash_aliases
+  tags:
+    - setup
+
 - name: install web packages
   apt: pkg={{item}} state=installed update_cache=yes cache_valid_time={{six_hours}}
   with_items: "{{setup.pkg}}"
