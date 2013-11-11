@@ -16,8 +16,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: true
   config.vm.synced_folder "project_name", "/home/deploy/www/domains/example.com/", id: "django-root", owner: "deploy_user", disabled: false
 
-  # start with provisioning once with the line below commented out.  Then, while the
-  # vagrant is halted, uncomment it and bring vagrant back up
   # config.ssh.private_key_path = "/Users/Tomas/.ssh/v
 
   config.vm.provider :virtualbox do |vb|
