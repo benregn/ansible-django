@@ -19,6 +19,11 @@
   tags:
     - setup
 
+- name: write .bashrc
+  copy: src=bashrc dest=/home/{{setup.deploy_username}}/.bashrc owner={{setup.deploy_username}} group=www-data
+  tags:
+    - setup
+
 - name: install web packages
   apt: pkg={{item}} state=installed update_cache=yes cache_valid_time={{six_hours}}
   with_items: "{{setup.pkg}}"
