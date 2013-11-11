@@ -84,6 +84,11 @@
   tags:
     - setup
 
+- name: ensure supervisor is started
+  service: name=supervisord state=started
+  tags:
+    - setup
+
 - name: create /etc/supervisor directory
   file: path=/etc/supervisor state=directory
   tags:
