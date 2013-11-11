@@ -35,17 +35,22 @@
   tags:
     - setup
 
-- name: disallow root SSH access
-  lineinfile: dest=/etc/ssh/sshd_config regexp="^PermitRootLogin" line="PermitRootLogin no" state=present
-  notify: restart ssh
-  tags:
-    - setup
-
-- name: disallow password authentication
-  lineinfile: dest=/etc/ssh/sshd_config regexp="^PasswordAuthentication" line="PasswordAuthentication no" state=present
-  notify: restart ssh
-  tags:
-    - setup
+- name: update ssh parameters
+  lineinfile:
+    dest=/etc/ssh/sshd_config
+    state=present
+    regexp=^{{ item.key }}
+    line="{{ item.key }} {{ item.value }}"
+    insertafter=EOF
+  with_items:
+    - { key: 'PermitRootLogin', value: 'no' }
+    - { key: 'PasswordAuthentication', value: 'no' }
+    - { key: 'LoginGraceTime', value: '20' }
+    - { key: 'X11Forwarding', value: 'no' }
+    - { key: 'ClientAliveInterval', value: '30' }
+    - { key: 'ClientAliveCountMax', value: '1000' }
+  notify:
+    - restart ssh
 
 - name: adjust APT update intervals
   copy: src=apt_periodic dest=/etc/apt/apt.conf.d/10periodic
