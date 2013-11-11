@@ -2,6 +2,10 @@
 # master
 master = true
 
+{% for item in django.env_vars %}
+env = {{ item.key }}={{ item.value }}
+{% endfor %}
+
 # maximum number of processes
 processes = {{ansible_processor_cores}}
 

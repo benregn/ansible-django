@@ -2,6 +2,8 @@
 django:
   root_dir: /path/to/django/root
   wsgi_path: config.wsgi
+  env_vars:
+    - {key: 'ENV_VAR_NAME', value: 'ENV_VAR_VALUE'}
 python:
   dependencies:
     - python-dev
