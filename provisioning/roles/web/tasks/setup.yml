@@ -24,3 +24,8 @@
   with_items: "{{setup.pkg}}"
   tags:
     - setup
+
+- name: "create /var/log/{{project_name}} directory"
+  file: path=/var/log/{{project_name}} owner={{setup.deploy_username}} group=www-data state=directory
+  tags:
+    - setup
