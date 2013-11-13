@@ -4,3 +4,4 @@
 - include: nginx.yml
 - include: uwsgi.yml
 - include: rabbitmq.yml
+- include: celery.yml
