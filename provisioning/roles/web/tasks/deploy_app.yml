@@ -1,0 +1,18 @@
+---
+- name: install pip requirements
+  pip: >
+    virtualenv=/home/{{setup.deploy_username}}/.virtualenvs/{{project_name}}
+    requirements={{django.root_dir}}/{{django.reqs_path}}/{{settings_module}}.txt
+  sudo: False
+  tags:
+    - deploy
+
+- name: run syncdb
+  django_manage: app_path={{django.root}} command=syncdb virtualenv:/home/{{setup.deploy_username}}/.virtualenvs/{{project_name}}
+  tags:
+    - deploy
+
+- name: run migrations
+  django_manage: app_path={{django.root}} command=migrate virtualenv:/home/{{setup.deploy_username}}/.virtualenvs/{{project_name}}
+  tags:
+    - deploy
