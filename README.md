@@ -46,6 +46,8 @@ Use cookiecutter to automate some of the setup for each new project?
 
 Fabric or ansible deploy script
 
+look into monit
+
 
 Troubleshooting
 ---------------
