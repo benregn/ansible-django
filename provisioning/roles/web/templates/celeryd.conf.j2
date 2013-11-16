@@ -1,5 +1,5 @@
-[program:celery]
-command=/home/{{ setup.deploy_username }}/.virtualenvs/{{ project_name }}/bin/python {{ django.root }}/manage.py celeryd --loglevel=INFO
+[program:celeryd]
+command=/home/{{ setup.deploy_username }}/.virtualenvs/{{ project_name }}/bin/python {{ django.root_dir }}/manage.py celeryd --loglevel=INFO
 directory={{ django.root_dir }}
 user={{ setup.deploy_username }}
 group=www-data
