@@ -16,3 +16,18 @@
   django_manage: app_path={{django.root}} command=migrate virtualenv:/home/{{setup.deploy_username}}/.virtualenvs/{{project_name}}
   tags:
     - deploy
+
+- name: "ensure {{project_name}} uwsgi is running"
+  supervisorctl: name={{project_name}} state=restarted
+  tags:
+    - uwsgi
+
+- name: ensure celerybeat is running
+  supervisorctl: name=celerybeat state=restarted
+  tags:
+    - celery
+
+- name: ensure celeryd is running
+  supervisorctl: name=celeryd state=restarted
+  tags:
+    - celery
