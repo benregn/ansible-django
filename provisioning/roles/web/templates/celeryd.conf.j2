@@ -10,6 +10,8 @@ autostart=true
 autorestart=true
 startsecs=10
 
+environment={% for item in django.env_vars %}{{ item.key }}="{{ item.value }}"{% if not loop.last %},{% endif %}{% endfor %}
+
 ; Need to wait for currently executing tasks to finish at shutdown.
 ; Increase this if you have very long running tasks.
 stopwaitsecs = 600

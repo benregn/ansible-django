@@ -9,3 +9,5 @@ stderr_logfile=/var/log/celery/{{ project_name }}_beat_error.log
 autostart=true
 autorestart=true
 startsecs=10
+
+environment={% for item in django.env_vars %}{{ item.key }}="{{ item.value }}"{% if not loop.last %},{% endif %}{% endfor %}
