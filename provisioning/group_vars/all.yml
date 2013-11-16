@@ -1,3 +1,7 @@
 ---
 six_hours: 21600
 project_name: project_name
+deploy_user: deploy
+code_root_dir: /home/{{deploy_user}}/www/domains/{{project_name}}
+virtualenv_dir: /home/{{deploy_user}}/.virtualenvs/{{project_name}}
+reqs_dir: reqs

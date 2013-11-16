@@ -5,4 +5,3 @@
 - include: uwsgi.yml
 - include: rabbitmq.yml
 - include: celery.yml
-- include: deploy_app.yml

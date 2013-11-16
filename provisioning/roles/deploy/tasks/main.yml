@@ -1,0 +1,41 @@
+---
+- name: "ensure ~/.virtualenvs/{{project_name}} dir is created"
+  file: path=/home/{{deploy_user}}/.virtualenvs/{{project_name}} state=directory
+  tags:
+    - deploy
+
+- name: install pip requirements
+  pip: >
+    virtualenv=/home/{{deploy_user}}/.virtualenvs/{{project_name}}
+    requirements={{code_root_dir}}/{{reqs_dir}}/{{settings_module}}.txt
+  tags:
+    - deploy
+
+- name: run syncdb
+  django_manage: app_path={{code_root_dir}} command=syncdb virtualenv=/home/{{deploy_user}}/.virtualenvs/{{project_name}}
+  tags:
+    - deploy
+  environment:
+    ENV_VAR_NAME: ENV_VALUE
+
+- name: run migrations
+  django_manage: app_path={{code_root_dir}} command=migrate virtualenv=/home/{{deploy_user}}/.virtualenvs/{{project_name}}
+  tags:
+    - deploy
+  environment:
+    ENV_VAR_NAME: ENV_VALUE
+
+- name: "ensure {{project_name}} uwsgi is running"
+  supervisorctl: name={{project_name}} state=restarted
+  tags:
+    - deploy
+
+- name: ensure celerybeat is running
+  supervisorctl: name=celerybeat state=restarted
+  tags:
+    - deploy
+
+- name: ensure celeryd is running
+  supervisorctl: name=celeryd state=restarted
+  tags:
+    - deploy
