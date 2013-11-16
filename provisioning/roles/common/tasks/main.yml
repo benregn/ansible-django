@@ -77,6 +77,24 @@
   tags:
     - setup
 
+- name: install python
+  apt: pkg={{item}} state=installed update_cache=yes cache_valid_time={{six_hours}}
+  with_items:
+    - python-dev
+    - python-setuptools
+  tags:
+    - python
+
+- name: install pip
+  easy_install: name=pip
+  tags:
+    - python
+
+- name: install supervisor
+  pip: name=supervisor state=latest
+  tags:
+    - setup
+
 - name: add supervisord.conf
   copy: src=supervisord.conf dest={{supervisor.conf_location}}
   notify:

@@ -7,8 +7,6 @@ django:
     - {key: 'ENV_VAR_NAME', value: 'ENV_VAR_VALUE'}
 python:
   dependencies:
-    - python-dev
-    - python-setuptools
     ### Pillow prereqs
     - libtiff4-dev
     - libjpeg8-dev
@@ -22,7 +20,6 @@ python:
   pip_global_packages:
     - virtualenv
     - virtualenvwrapper
-    - supervisor
     - uwsgi
 setup:
   deploy_username: deploy
