@@ -48,6 +48,8 @@ Fabric or ansible deploy script
 
 look into monit
 
+Write about adding a rule to ~/.ssh/config to avoid host error
+
 
 Troubleshooting
 ---------------
