@@ -12,8 +12,3 @@
     - restart supervisord
   tags:
     - celery
-
-- name: ensure celery log dir id present
-  file: path=/var/log/celery/ owner=www-data group=www-data state=directory
-  tags:
-    - celery
