@@ -1,11 +1,11 @@
 [program:celeryd]
-command=/home/{{ setup.deploy_username }}/.virtualenvs/{{ project_name }}/bin/python {{ django.root_dir }}/manage.py celeryd --loglevel=INFO
+command={{ virtualenv_dir }}/bin/python manage.py celeryd --loglevel=INFO
 directory={{ django.root_dir }}
 user={{ setup.deploy_username }}
 group=www-data
 numprocs=1
-stdout_logfile=/var/log/celery/{{ project_name }}_daemon.log
-stderr_logfile=/var/log/celery/{{ project_name }}_daemon_error.log
+stdout_logfile=/var/log/supervisor/celeryd.log
+stderr_logfile=/var/log/supervisor/celeryd_error.log
 autostart=true
 autorestart=true
 startsecs=10

@@ -1,11 +1,11 @@
 [program:celerybeat]
-command=/home/{{ setup.deploy_username }}/.virtualenvs/{{ project_name }}/bin/python {{ django.root_dir }}/manage.py celerybeat --schedule={{ django.root_dir }}/celerybeat-schedule --loglevel=INFO
+command={{ virtualenv_dir }}/bin/python manage.py celerybeat --schedule=celerybeat-schedule --loglevel=INFO
 directory={{ django.root_dir }}
 user={{ setup.deploy_username }}
 group=www-data
 numprocs=1
-stdout_logfile=/var/log/celery/{{ project_name }}_beat.log
-stderr_logfile=/var/log/celery/{{ project_name }}_beat_error.log
+stdout_logfile=/var/log/supervisor/celerybeat.log
+stderr_logfile=/var/log/supervisor/celerybeat_error.log
 autostart=true
 autorestart=true
 startsecs=10
