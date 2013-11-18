@@ -8,7 +8,7 @@ stdout_logfile=/var/log/supervisor/celeryd.log
 stderr_logfile=/var/log/supervisor/celeryd_error.log
 autostart=true
 autorestart=true
-startsecs=10
+startsecs=5
 
 environment={% for item in django.env_vars %}{{ item.key }}="{{ item.value }}"{% if not loop.last %},{% endif %}{% endfor %}
 
