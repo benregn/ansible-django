@@ -1,4 +1,19 @@
 ---
+- name: git config name
+  shell: git config --global user.name "{{git.name}}" executable=/bin/bash
+  tags:
+    - deploy
+
+- name: git config email
+  shell: git config --global user.email {{git.email}} executable=/bin/bash
+  tags:
+    - deploy
+
+- name: pull git
+  git: repo={{git.repo}} dest={{code_root_dir}}
+  tags:
+    - deploy
+
 - name: "ensure ~/.virtualenvs/{{project_name}} dir is created"
   file: path=/home/{{deploy_user}}/.virtualenvs/{{project_name}} state=directory
   tags:
