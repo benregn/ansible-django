@@ -20,10 +20,10 @@
   tags:
     - setup
 
-- name: add custom ssh key for vagrant
-  authorized_key: user=vagrant key="{{ lookup('file', '~/.ssh/v.pub') }}"
-  tags:
-    - setup
+# - name: add custom ssh key for vagrant
+#   authorized_key: user=vagrant key="{{ lookup('file', '~/.ssh/v.pub') }}"
+#   tags:
+#     - setup
 
 # - name: remove default insecure ssh key
 #   lineinfile: dest=/home/vagrant/.ssh/authorized_keys regexp="vagrant insecure public key" state=absent
