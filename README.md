@@ -50,6 +50,8 @@ look into monit
 
 Write about adding a rule to ~/.ssh/config to avoid host error
 
+There is a log dir created for the app, /var/log/{{project_name}}
+
 
 Troubleshooting
 ---------------
