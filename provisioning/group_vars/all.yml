@@ -8,4 +8,7 @@ git:
 deploy_user: deploy
 code_root_dir: /home/{{deploy_user}}/www/domains/{{project_name}}
 virtualenv_dir: /home/{{deploy_user}}/.virtualenvs/{{project_name}}
+# relative to code_root_dir
 reqs_dir: reqs
+# dotted path to your wsgi.py, relative to code_root_dir
+wsgi_path: wsgi
