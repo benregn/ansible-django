@@ -27,14 +27,13 @@
     - deploy
 
 - name: run syncdb
-  django_manage: app_path={{code_root_dir}} command=syncdb virtualenv=/home/{{deploy_user}}/.virtualenvs/{{project_name}}
-  tags:
-    - deploy
-  environment:
-    ENV_VAR_NAME: ENV_VALUE
-
-- name: run migrations
-  django_manage: app_path={{code_root_dir}} command=migrate virtualenv=/home/{{deploy_user}}/.virtualenvs/{{project_name}}
+  django_manage: >
+    app_path={{code_root_dir}} command={{item}} settings=remindr.settings.prod
+    virtualenv=/home/{{deploy_user}}/.virtualenvs/{{project_name}}
+  with_items:
+    - syncdb
+    - migrate
+    - collectstatic
   tags:
     - deploy
   environment:
