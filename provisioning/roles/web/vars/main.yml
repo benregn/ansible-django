@@ -16,8 +16,6 @@ python:
     - virtualenvwrapper
     - uwsgi
 setup:
-  deploy_password: generate_your_own_password
-  # crypted password, generated on a Linux box using: echo 'import crypt,getpass; print crypt.crypt(getpass.getpass(), "$6$AC3bdCF7!$")' | python -
   pkg:
     - memcached
     - libmemcached-dev

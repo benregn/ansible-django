@@ -5,7 +5,12 @@ git:
   repo: git@github.com:username/repo-name.git
   name: John
   email: example@example.com
+
 deploy_user: deploy
+# crypted password, generated on a Linux box using: echo 'import crypt,getpass; print crypt.crypt(getpass.getpass(), "$6$AC3bdCF7!$")' | python -
+# default pass: 1234
+deploy_pass: $6$AC3bdCF7!$dwpCWoJ8/UcUtHv8eHjC/H6eF0JD7Tulqze0Ikmiwot4iIIrgiCHzgKRhARIbsAR1fIFSUFWGUnfCm2RYO7dZ/
+
 code_root_dir: /home/{{deploy_user}}/www/domains/{{project_name}}
 virtualenv_dir: /home/{{deploy_user}}/.virtualenvs/{{project_name}}
 # relative to code_root_dir

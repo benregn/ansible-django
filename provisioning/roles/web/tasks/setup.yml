@@ -1,6 +1,6 @@
 ---
 - name: add deployment user
-  user: name={{deploy_user}} password={{setup.deploy_password}} shell=/bin/bash uid=1002 groups=www-data append=yes createhome=yes state=present
+  user: name={{deploy_user}} password={{deploy_pass}} shell=/bin/bash uid=1002 groups=www-data append=yes createhome=yes state=present
   tags:
     - setup
 
