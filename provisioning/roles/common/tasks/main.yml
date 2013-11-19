@@ -52,6 +52,16 @@
   notify:
     - restart ssh
 
+- name: copy ssh key over
+  copy: src=key dest=/home/{{deploy_user}}/.ssh/id_rsa mode=644
+  tags:
+    - setup
+
+- name: copy ssh key over
+  copy: src=key.pub dest=/home/{{deploy_user}}/.ssh/id_rsa.pub mode=644
+  tags:
+    - setup
+
 - name: adjust APT update intervals
   copy: src=apt_periodic dest=/etc/apt/apt.conf.d/10periodic
   tags:
