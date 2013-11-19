@@ -18,11 +18,11 @@
   tags:
     - postgres
 
-- name: add postgres user to admin group
-  user: name=postgres groups=admin append=yes
-  sudo: True
-  tags:
-    - postgres
+# - name: add postgres user to admin group
+#   user: name=postgres groups=admin append=yes
+#   sudo: True
+#   tags:
+#     - postgres
 
 # - name: update postgres db configuration
 #   copy: src=postgresql.conf dest=/etc/postgresql/9.3/main/postgresql.conf
