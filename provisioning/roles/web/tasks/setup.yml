@@ -31,6 +31,6 @@
     - setup
 
 - name: "create /var/log/{{project_name}} directory"
-  file: path=/var/log/{{project_name}} owner={{setup.deploy_username}} group=www-data state=directory
+  file: path=/var/log/{{project_name}} owner={{deploy_user}} group=www-data state=directory mode=775
   tags:
     - setup
