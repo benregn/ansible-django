@@ -13,7 +13,7 @@ server {
     server_name             localhost;
     charset                 utf-8;
     client_max_body_size    75M;
-    root                    {{django.root_dir}};
+    root                    {{code_root_dir}};
 
     location / {
         try_files $uri @uwsgi;
