@@ -2,7 +2,7 @@
 # master
 master = true
 
-{% for item in django.env_vars %}
+{% for item in env_vars %}
 env = {{ item.key }}={{ item.value }}
 {% endfor %}
 

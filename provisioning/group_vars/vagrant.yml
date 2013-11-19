@@ -1,2 +1,4 @@
 ---
 settings_module: prod
+env_vars:
+  - {key: 'ENV_VAR_NAME', value: 'ENV_VAR_VALUE'}
