@@ -2,15 +2,15 @@ upstream app_server {
     server unix:///tmp/{{project_name}}.sock;
 }
 
-# server {
-#     server_name www.example.com;
-#     return 301 $scheme://example.com$request_uri;
-# }
+server {
+    server_name www.{{fqdn}};
+    return 301 $scheme://{{fqdn}}$request_uri;
+}
 
 server {
     listen                  80;
     listen                  [::]:80;
-    server_name             localhost;
+    server_name             {{fqdn}};
     charset                 utf-8;
     client_max_body_size    75M;
     root                    {{code_root_dir}};
