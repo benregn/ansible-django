@@ -62,8 +62,9 @@
   tags:
     - setup
 
-- name: copy ssh key over
-  copy: src=key.pub dest=/home/{{deploy_user}}/.ssh/id_rsa.pub mode=644
+  authorized_key: user=root key="{{ item }}"
+  with_file:
+    - ../../../keys/key.pub
   tags:
     - setup
 
