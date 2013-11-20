@@ -53,15 +53,6 @@
     - restart ssh
 
 - name: add custom ssh key for root
-  authorized_key: user=root key=key.pub
-  tags:
-    - setup
-
-- name: copy ssh key over
-  copy: src=key dest=/home/{{deploy_user}}/.ssh/id_rsa mode=644
-  tags:
-    - setup
-
   authorized_key: user=root key="{{ item }}"
   with_file:
     - ../../../keys/key.pub
