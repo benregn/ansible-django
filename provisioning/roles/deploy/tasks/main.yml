@@ -1,11 +1,11 @@
 ---
 - name: git config name
-  shell: git config --global user.name "{{git.name}}" executable=/bin/bash
+  shell: git config --global user.name "{{ git.name }}" executable=/bin/bash
   tags:
     - deploy
 
 - name: git config email
-  shell: git config --global user.email {{git.email}} executable=/bin/bash
+  shell: git config --global user.email {{ git.email }} executable=/bin/bash
   tags:
     - deploy
 
@@ -15,34 +15,34 @@
     - deploy
 
 - name: pull git
-  git: repo={{git.repo}} dest={{code_root_dir}}
+  git: repo={{ git.repo }} dest={{ code_root_dir }}
   tags:
     - deploy
 
 - name: "ensure ~/.virtualenvs/{{project_name}} dir is created"
-  file: path=/home/{{deploy_user}}/.virtualenvs/{{project_name}} state=directory
+  file: path=/home/{{ deploy_user }}/.virtualenvs/{{ project_name }} state=directory
   tags:
     - deploy
 
 - name: "ensure correct permission in /var/log/{{project_name}}"
   command: "{{ item }}"
   with_items:
-    - "chown --recursive deploy:www-data /var/log/{{project_name}}"
-    - "chmod --recursive 775 /var/log/{{project_name}}"
+    - "chown --recursive deploy:www-data /var/log/{{ project_name }}"
+    - "chmod --recursive 775 /var/log/{{ project_name }}"
   tags:
     - deploy
 
 - name: install pip requirements
   pip: >
-    virtualenv=/home/{{deploy_user}}/.virtualenvs/{{project_name}}
-    requirements={{code_root_dir}}/{{reqs_dir}}/{{settings_module}}.txt
+    virtualenv=/home/{{ deploy_user }}/.virtualenvs/{{ project_name }}
+    requirements={{ code_root_dir }}/{{ reqs_dir }}/{{ settings_module }}.txt
   tags:
     - deploy
 
 - name: run django manage commands
   django_manage: >
-    app_path={{code_root_dir}} command={{item}} settings=remindr.settings.prod
-    virtualenv=/home/{{deploy_user}}/.virtualenvs/{{project_name}}
+    app_path={{ code_root_dir }} command={{ item }} settings=remindr.settings.prod
+    virtualenv=/home/{{ deploy_user }}/.virtualenvs/{{ project_name }}
   with_items:
     - syncdb
     - migrate
