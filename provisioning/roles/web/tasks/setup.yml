@@ -14,8 +14,13 @@
   tags:
     - setup
 
-- name: copy ssh key over
+- name: "copy public ssh key over for {{deploy_user}}"
   copy: src=keys/key.pub dest=/home/{{deploy_user}}/.ssh/id_rsa.pub mode=644
+  tags:
+    - setup
+
+- name: "copy private ssh key over for {{deploy_user}}"
+  copy: src=keys/key dest=/home/{{deploy_user}}/.ssh/id_rsa mode=644
   tags:
     - setup
 
