@@ -52,20 +52,12 @@
   environment:
     ENV_VAR_NAME: ENV_VALUE
 
-- name: "ensure {{project_name}} uwsgi is running"
-  supervisorctl: name={{project_name}} state=restarted
-  sudo: True
-  tags:
-    - deploy
-
-- name: ensure celerybeat is running
-  supervisorctl: name=celerybeat state=restarted
-  sudo: True
-  tags:
-    - deploy
-
-- name: ensure celeryd is running
-  supervisorctl: name=celeryd state=restarted
+- name: "restart supervisor managed processes"
+  supervisorctl: name={{ item }} state=restarted
+  with_items:
+    - "{{ project_name }}"
+    - celerybeat
+    - celeryd
   sudo: True
   tags:
     - deploy
