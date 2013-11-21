@@ -39,7 +39,7 @@
   tags:
     - deploy
 
-- name: run syncdb
+- name: run django manage commands
   django_manage: >
     app_path={{code_root_dir}} command={{item}} settings=remindr.settings.prod
     virtualenv=/home/{{deploy_user}}/.virtualenvs/{{project_name}}
