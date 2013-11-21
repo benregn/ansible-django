@@ -24,6 +24,14 @@
   tags:
     - deploy
 
+- name: "ensure correct permission in /var/log/{{project_name}}"
+  command: "{{ item }}"
+  with_items:
+    - "chown --recursive deploy:www-data /var/log/{{project_name}}"
+    - "chmod --recursive 775 /var/log/{{project_name}}"
+  tags:
+    - deploy
+
 - name: install pip requirements
   pip: >
     virtualenv=/home/{{deploy_user}}/.virtualenvs/{{project_name}}
