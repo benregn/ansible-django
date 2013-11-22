@@ -5,6 +5,7 @@ Step-by-step
 ------------
 
 1. have PSQL_USER, PSQL_DB_NAME, PSQL_PASSWORD in your environment
+    * export PSQL_USER=username && export PSQL_DB_NAME=db_name && export PSQL_PASSWORD=your_password && export DATABASE_URL=postgres://$PSQL_USER:$PSQL_PASSWORD@localhost:5432/$PSQL_DB_NAME
 
 2. configure synced folder in the Vagrantfile, change project_name, deploy and deploy_user
 
