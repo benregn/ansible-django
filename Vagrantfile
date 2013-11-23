@@ -23,9 +23,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "provisioning/site.yml"
-    ansible.inventory_path = "provisioning/local"
+    ansible.playbook = "site.yml"
+    ansible.inventory_path = "local"
   end
 
-  config.vm.provision "shell", path: "provisioning/upgrade_guest_additions.sh"
+  config.vm.provision "shell", path: "upgrade_guest_additions.sh"
 end

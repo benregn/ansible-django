@@ -25,7 +25,7 @@ If you'd like to upgrade the guest additions to match the version you have insta
 
 To upgrade the guest additions:
 
-1. uncomment the `# config.vm.provision "shell", path: "provisioning/upgrade_guest_additions.sh"` line in the `Vagrantfile`
+1. uncomment the `# config.vm.provision "shell", path: "upgrade_guest_additions.sh"` line in the `Vagrantfile`
 2. change CURRENT_VERSION to the version of VirtualBox you have installed, e.g. 4.3.0
     * run `VBoxManage --version` if don't know the version
 3. run `vagrant provision --provision-with shell`
