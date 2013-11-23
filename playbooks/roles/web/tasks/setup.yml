@@ -27,7 +27,7 @@
 - name: "add ssh key for: {{deploy_user}}"
   authorized_key: user={{ deploy_user }} key="{{ item }}"
   with_file:
-    - ../../keys/key.pub
+    - ../../../keys/key.pub
   tags:
     - setup
 

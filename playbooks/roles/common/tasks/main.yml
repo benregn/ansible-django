@@ -55,7 +55,7 @@
 - name: add custom ssh key for root
   authorized_key: user=root key="{{ item }}"
   with_file:
-    - ../../keys/key.pub
+    - ../../../keys/key.pub
   tags:
     - setup
 
