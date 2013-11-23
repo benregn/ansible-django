@@ -1,1 +1,5 @@
 *.vagrant/
+group_vars/
+!group_vars/*.example
+playbooks/**/vars/
+!playbooks/**/vars/*.examle
