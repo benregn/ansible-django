@@ -5,3 +5,5 @@ playbooks/**/vars/
 !playbooks/**/vars/*.example
 keys/
 !keys/*.example
+inventory/
+!inventory/*.example
