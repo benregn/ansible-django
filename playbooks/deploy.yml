@@ -1,6 +1,5 @@
 ---
 - hosts: webservers
   gather_facts: no
-  user: deploy
   roles:
     - deploy
