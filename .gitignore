@@ -2,4 +2,6 @@
 group_vars/
 !group_vars/*.example
 playbooks/**/vars/
-!playbooks/**/vars/*.examle
+!playbooks/**/vars/*.example
+keys/
+!keys/*.example
