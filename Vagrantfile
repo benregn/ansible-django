@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 15672, host: 15672, id: "rabbitmq-management"
 
   config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: true
-  config.vm.synced_folder "releasly_project", "/home/deploy/www/domains/releasly.com/", id: "django-root", group: "www-data", disabled: false, :mount_options => ["uid=1002"]
+  config.vm.synced_folder "releasly", "/var/www/django/releasly/", id: "django-root", group: "www-data", disabled: false, :mount_options => ["uid=1002"]
 
   # config.ssh.private_key_path = "/Users/Tomas/.ssh/v
 
