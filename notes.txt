@@ -1,0 +1,47 @@
+comment out Vagrant sync_folder before running provision, then uncomment again
+
+
+
+install reqs (pip)
+
+put environment vars in /etc/uwsgi/vassals/{{project_name}}.ini
+AND
+put env vars in any of the .bash* files
+List:
+    DJANGO_SETTINGS_MODULE
+    RABBITMQ_URL
+    DATABASE_URL
+    TMDB_API_KEY
+    TMDB_PRIVATE_URL
+    export DJANGO_SETTINGS_MODULE=remindr.settings.prod && export RABBITMQ_URL=amqp://django:changeme@localhost:5672//project_name && export PSQL_USER=releasly && export PSQL_DB_NAME=db_releasly && export PSQL_PASSWORD=skjf9845q234dsux23tegrh92314 && export DATABASE_URL=postgres://$PSQL_USER:$PSQL_PASSWORD@localhost:5432/$PSQL_DB_NAME && export TMDB_PRIVATE_URL=http://private-dc67-themoviedb.apiary.io/3 && export TMDB_API_KEY=ecb8cf86332887dcabc4269cbac53f42
+
+run syncdb & migrate
+
+ansible - need to make log dir & make sure it has correct permissions
+
+dj runserver 0.0.0.0:port --settings=remindr.settings.dev
+OR
+export DJANGO_SETTINGS_MODULE=remindr.settings.dev
+
+remember to include the "/" in rabbitmq url if the vhost name is "/project_name", e.g. amqp://django:changeme@localhost:5672//project_name
+note the two "/" before project_name
+
+no ' (single quotes in PSQL_* env vars)
+
+
+
+
+
+
+get code (git)
+
+install pip requirements*.txt
+pip: virtualenv:/home/{{setup.deploy_username}}/.virtualenvs/{{project_name}} requirements={{django.reqs_prod_path}}
+
+run syncdb && migrate
+django_manage: app_path={{django.root}} command=syncdb virtualenv:/home/{{setup.deploy_username}}/.virtualenvs/{{project_name}}
+
+django_manage: app_path={{django.root}} command=migrate virtualenv:/home/{{setup.deploy_username}}/.virtualenvs/{{project_name}}
+
+restart uwsgi, celery
+
