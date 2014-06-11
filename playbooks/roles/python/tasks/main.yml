@@ -1,7 +1,7 @@
 ---
 - name: install python and dependencies using apt
   apt: pkg={{item}} state=installed update_cache=yes cache_valid_time={{six_hours}}
-  with_items: "{{python.dependencies}}"
+  with_items: "{{python_dependencies}}"
   tags:
     - python
 
@@ -12,7 +12,7 @@
 
 - name: install various libraries with pip
   pip: name={{item}} state=latest
-  with_items: "{{python.pip_global_packages}}"
+  with_items: "{{python_pip_global_packages}}"
   tags:
     - python
 
