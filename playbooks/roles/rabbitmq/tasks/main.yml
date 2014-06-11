@@ -28,12 +28,12 @@
     - rabbitmq
 
 - name: add admin user
-  rabbitmq_user: user=admin password={{rabbitmq.admin_password}} tags=administrator vhost=/ configure_priv=.* write_priv=.* read_priv=.* state=present node={{rabbit_node}}
+  rabbitmq_user: user=admin password={{rabbitmq_admin_password}} tags=administrator vhost=/ configure_priv=.* write_priv=.* read_priv=.* state=present node={{rabbit_node}}
   tags:
     - rabbitmq
 
-- name: "add {{rabbitmq.user}} user"
-  rabbitmq_user: user={{rabbitmq.user}} password={{rabbitmq.password}} configure_priv=.* read_priv=.* write_priv=.* vhost=/{{project_name}} tags={{project_name}} state=present node={{rabbit_node}}
+- name: "add {{rabbitmq_user}} user"
+  rabbitmq_user: user={{rabbitmq_user}} password={{rabbitmq_password}} configure_priv=.* read_priv=.* write_priv=.* vhost=/{{project_name}} tags={{project_name}} state=present node={{rabbit_node}}
   tags:
     - rabbitmq
 

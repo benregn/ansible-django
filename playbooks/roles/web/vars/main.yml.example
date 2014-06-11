@@ -20,7 +20,3 @@ setup:
     - memcached
     - libmemcached-dev
     - libevent-dev
-rabbitmq:
-  user: django
-  password: changeme
-  admin_password: changeme2
