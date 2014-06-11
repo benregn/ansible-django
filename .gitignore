@@ -1,9 +1,1 @@
 *.vagrant/
-group_vars/
-!group_vars/*.example
-playbooks/**/vars/
-!playbooks/**/vars/*.example
-keys/
-!keys/*.example
-inventory/
-!inventory/*.example
