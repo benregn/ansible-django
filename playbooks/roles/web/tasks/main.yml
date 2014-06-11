@@ -1,5 +1,4 @@
 ---
 - include: setup.yml
 - include: python.yml
-- include: rabbitmq.yml
 - include: celery.yml
