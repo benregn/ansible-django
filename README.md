@@ -7,9 +7,9 @@ Step-by-step
 1. have PSQL_USER, PSQL_DB_NAME, PSQL_PASSWORD in your environment
     * export PSQL_USER=username && export PSQL_DB_NAME=db_name && export PSQL_PASSWORD=your_password && export DATABASE_URL=postgres://$PSQL_USER:$PSQL_PASSWORD@localhost:5432/$PSQL_DB_NAME
 
-2. configure synced folder in the Vagrantfile, change project_name, deploy and deploy_user
+2. configure synced folder in the Vagrantfile, change project_name, deploy and django_user
 
-3. change following ansible vars: project_name, root_dir, wsgi_path, logwatch_email, root_address, mailname, deploy_password
+3. change following ansible vars: project_name, root_dir, wsgi_path, logwatch_email, root_address, mailname, django_password
     * roles/web/vars
         * rabbitmq.admin_password
         * rabbitmq.password
