@@ -1,4 +1,3 @@
 ---
 - include: setup.yml
 - include: python.yml
-- include: celery.yml
