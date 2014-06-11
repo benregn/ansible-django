@@ -1,7 +1,7 @@
 [program:celerybeat]
 command={{ virtualenv_dir }}/bin/python manage.py celerybeat --schedule=celerybeat-schedule --loglevel=INFO
 directory={{ code_root_dir }}
-user={{ deploy_user }}
+user={{ django_user }}
 group=www-data
 numprocs=1
 stdout_logfile=/var/log/supervisor/celerybeat.log

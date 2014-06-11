@@ -1,7 +1,7 @@
 [program:celeryd]
 command={{ virtualenv_dir }}/bin/python manage.py celeryd --loglevel=INFO
 directory={{ code_root_dir }}
-user={{ deploy_user }}
+user={{ django_user }}
 group=www-data
 numprocs=1
 stdout_logfile=/var/log/supervisor/celeryd.log
