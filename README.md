@@ -1,6 +1,10 @@
 ansible-django
 ==============
 
+NOT MAINTAINED
+==============
+Check out https://github.com/benregn/cookiecutter-django-ansible
+
 Step-by-step
 ------------
 
